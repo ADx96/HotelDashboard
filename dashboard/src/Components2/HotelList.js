@@ -12,13 +12,11 @@ const Hotel = () => {
 
   const hotelList = hotelsStore.hotels
     .filter((hotel) => hotel.name.toLowerCase().includes(query.toLowerCase()))
-    .map((hotel) => <ProductsItem product={hotel} key={hotel.id} />);
+    .map((hotel) => <HotelItem product={hotel} key={hotel.id} />);
 
   return (
     <div>
-      <SearchBar setQuery={setQuery} />
       <ProductWrapper>{hotelList}</ProductWrapper>
-      <AddButton />
     </div>
   );
 };

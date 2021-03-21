@@ -1,6 +1,6 @@
 import React from "react";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
-import "../Components/Datatable.css";
+import "../dashboard/Components/Datatable.css";
 
 function Contact() {
   const rows = [

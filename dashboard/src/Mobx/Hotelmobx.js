@@ -3,6 +3,7 @@ import axios from "axios";
 
 class HotelStore {
   hotels = [];
+
   createHotel = async (newHotel) => {
     try {
       const res = await axios.post(

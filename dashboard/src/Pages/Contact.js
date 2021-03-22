@@ -3,25 +3,26 @@ import { DataGrid, GridToolbar } from "@material-ui/data-grid";
 import "../Components/Datatable.css";
 import ContactsStore from "../Mobx/ContactMobx";
 
-function Contact(props) {
+function Contact() {
+  const rows = [];
+  ContactsStore.contacts.forEach((contact) => {
+    rows.push({
+      id: contact.id,
+      col1: contact.id,
+      col2: contact.Customername,
+      col3: contact.mobile,
+      col4: contact.email,
+      col5: contact.message,
+    });
+  });
 
-  
-  const rows = [];   ContactsStore.hotels.forEach((contact) => {
-    
-    rows.push({ 
-    
-    id: contact.id, col1: contact.id, col2: contact.Customername, col3: contact.email, 
-    col4: contact.message, 
-    }); });
-
-    const columns = [
-      { field: "col1", headerName: "first", width: 150 },
-      { field: "col2", headerName: "second", width: 150 },
-      { field: "col4", headerName: "third", width: 150 },
-  
-  
-  
-    ];
+  const columns = [
+    { field: "col1", headerName: "id", width: 150 },
+    { field: "col2", headerName: "CustomerName", width: 150 },
+    { field: "col4", headerName: "mobile", width: 150 },
+    { field: "col4", headerName: "email", width: 150 },
+    { field: "col4", headerName: "message", width: 150 },
+  ];
 
   return (
     <div className="table" style={{ height: 500, width: "60%" }}>

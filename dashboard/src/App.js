@@ -8,14 +8,12 @@ import Contact from "./Pages/Contact";
 function App() {
   return (
     <div className="App">
-      <h1>Dashboard</h1>
-
       <Router>
         <ResponsiveDrawer />
         <Switch>
           <Route path="/AddHotel" exact component={Inbox} />
-          <Route path="/" component={Booking} />
-          <Route path="/Contact" component={Contact} />
+          <Route path="/" exact component={Booking} />
+          <Route path="/Contact" exact component={Contact} />
         </Switch>
       </Router>
     </div>

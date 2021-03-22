@@ -6,10 +6,7 @@ class HotelStore {
 
   createHotel = async (newHotel) => {
     try {
-      const res = await axios.post(
-        "http://localhost:8000/Hotels/create",
-        newHotel
-      );
+      const res = await axios.post("http://localhost:8000/Hotels/", newHotel);
       this.hotels.push(res.data);
     } catch (error) {
       console.log("log1 -> createCookie -> error", error);

@@ -1,12 +1,11 @@
-input[type=text] {
+input[type="text"] {
   width: 30%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-
 }
 
-input[type=number] {
+input[type="number"] {
   width: 30%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -14,14 +13,18 @@ input[type=number] {
 }
 
 label {
-
-    padding: 12px 20px;
-
+  padding: 12px 20px;
 }
 
 button {
-  
   float: center;
   background-color: beige;
 }
 
+.form-containe {
+  display: inline;
+}
+
+.makeStyles-root-24 {
+  margin-left: 10px;
+}

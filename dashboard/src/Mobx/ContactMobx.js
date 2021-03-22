@@ -6,50 +6,41 @@ class ContactStore {
 
   createContact = async (newContact) => {
     try {
-      const res = await axios.post(
-        "http://localhost:8000/Contacts",
-        newContact
-      );
+      const res = await axios.post("http://localhost:8000/Contact", newContact);
       this.contacts.push(res.data);
     } catch (error) {
-      console.log("log1 -> createCookie -> error", error);
+      console.log("log1 -> CreateContact -> error", error);
     }
   };
-  deletContact = async (contactId) => {
-    try {
-      await axios.delete(`http://localhost:8000/Contact/${contactId}`);
-      this.contacts = this.contacts.filter((contact) => contact.id !== +contactId);
-    } catch (error) {
-      console.log("Contacts -> deleteCookie -> error", error);
-    }
-  };
+
   fetchContact = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/Contacts");
-      this.Contacts = response.data;
+      const response = await axios.get("http://localhost:8000/Contact");
+      this.contacts = response.data;
       console.log(this.contacts);
     } catch (error) {
-      console.error("Contacts -> fetchProducts -> error", error);
+      console.error("Contact -> fetchContacs -> error", error);
     }
   };
 
   updateContact = async (updatedContact) => {
     try {
       await axios.put(
-        `http://localhost:8000/Contacts/${updatedContact.id}`,
+        `http://localhost:8000/Contact/${updatedContact.id}`,
         updatedContact
       );
-      const contact = this.contacts.find((contact) => contact.id === updatedContact.id);
+      const contact = this.contacts.find(
+        (contact) => contact.id === updatedContact.id
+      );
       for (const key in contact) contact[key] = updatedContact[key];
     } catch (error) {
-      console.log("Contacts -> updateCookie -> error", error);
+      console.log("Hotels -> updateContact -> error", error);
     }
   };
 
   constructor() {
     makeObservable(this, {
-    contacts: observable,
-      deleteContact: action,
+      contacts: observable,
       createContact: action,
       updateContact: action,
       fetchContact: action,
@@ -57,7 +48,7 @@ class ContactStore {
   }
 }
 
-const ContactsStore = new ContactStore();
-ContactsStore.fetchContact();
+const contactStore = new ContactStore();
+contactStore.fetchContact();
 
-export default ContactsStore;
+export default contactStore;

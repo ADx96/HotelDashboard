@@ -17,11 +17,19 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import { Link } from "react-router-dom";
-import './Sidebar.css';
-
+import SvgIcon from "@material-ui/core/SvgIcon";
+import Icon from "@material-ui/core/Icon";
+import "./Sidebar.css";
 
 const drawerWidth = 240;
 
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -135,23 +143,20 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-       
+
         <List>
           <ListItem>
-            <Link to="/">
-              <h3 >Booking</h3>
-            </Link>
+            <HomeIcon style={{ fontSize: 27 }} /> <Link to="/">Booking</Link>
           </ListItem>
+
           <ListItem>
-            <Link to="/AddHotel">
-              {" "}
-              <h3>Add</h3>
-            </Link>
+            <Icon color="black">add_circle</Icon>
+
+            <Link to="/AddHotel"> Add</Link>
           </ListItem>
+
           <ListItem>
-            <Link to="/Contact">
-              <h3>Contact</h3>
-            </Link>
+            <InboxIcon /> <Link to="/Contact">Contact</Link>
           </ListItem>
 
           <ListItemIcon></ListItemIcon>
@@ -159,7 +164,6 @@ export default function PersistentDrawerLeft() {
         </List>
         <Divider />
       </Drawer>
-     
 
       <main
         className={clsx(classes.content, {

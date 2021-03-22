@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { CreateButtonStyled } from "../Components2/Styles";
 import hotelsStore from "../Mobx/Hotelmobx";
+import './Create.css';
+
 
 const Hotelmodal = () => {
   const [hotel, setHotel] = useState({
@@ -50,9 +52,10 @@ const Hotelmodal = () => {
         <label>Image</label>
         <input required type="file" className="form-control" name="image" />
       </div>
-      <CreateButtonStyled className="btn float-right" onClick={handleSubmit}>
+
+      <button className="btn float-right" onClick={handleSubmit}>
         Create
-      </CreateButtonStyled>
+      </button>
     </form>
   );
 };

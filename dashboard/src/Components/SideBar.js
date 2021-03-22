@@ -17,6 +17,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import { Link } from "react-router-dom";
+import './Sidebar.css';
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -132,10 +135,11 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
+       
         <List>
           <ListItem>
             <Link to="/">
-              <h3>Booking</h3>
+              <h3 >Booking</h3>
             </Link>
           </ListItem>
           <ListItem>
@@ -155,6 +159,8 @@ export default function PersistentDrawerLeft() {
         </List>
         <Divider />
       </Drawer>
+     
+
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,

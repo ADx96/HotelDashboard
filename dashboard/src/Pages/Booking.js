@@ -1,17 +1,32 @@
 import React from "react";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
 import "../Components/Datatable.css";
+import bookingsStore from "../Mobx/BookngMobx";
 
-function Booking() {
-  const rows = [
-    { id: 1, col1: "1", col2: "1" },
-    { id: 2, col1: "2", col2: "2" },
-    { id: 3, col1: "3", col2: "3" },
-  ];
+function Booking(props) {
+
+
+  const rows = [];   bookingsStore.hotels.forEach((booking) => {
+    
+    rows.push({ 
+    
+    id: booking.id, col1: booking.id, col2: booking.hotelname, col3: booking.customername, 
+    col4: booking.price, col5: booking.Date, 
+    col6: booking.customerpassportnumber,
+    col7: booking.hotellocation,
+    col8: booking.Roomnum}); });
 
   const columns = [
     { field: "col1", headerName: "first", width: 150 },
     { field: "col2", headerName: "second", width: 150 },
+    { field: "col4", headerName: "third", width: 150 },
+    { field: "col5", headerName: "fourth", width: 150 },
+    { field: "col6", headerName: "fifth", width: 150 },
+    { field: "col7", headerName: "sixth", width: 150 },
+    { field: "col8", headerName: "sixth", width: 150 },
+
+
+
   ];
 
   return (

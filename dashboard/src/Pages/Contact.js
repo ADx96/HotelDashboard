@@ -1,18 +1,27 @@
 import React from "react";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
-import "../dashboard/Components/Datatable.css";
+import "../Components/Datatable.css";
+import ContactsStore from "../Mobx/ContactMobx";
 
-function Contact() {
-  const rows = [
-    { id: 1, col1: "1", col2: "1" },
-    { id: 2, col1: "2", col2: "2" },
-    { id: 3, col1: "3", col2: "3" },
-  ];
+function Contact(props) {
 
-  const columns = [
-    { field: "col1", headerName: "first", width: 150 },
-    { field: "col2", headerName: "second", width: 150 },
-  ];
+  
+  const rows = [];   ContactsStore.hotels.forEach((contact) => {
+    
+    rows.push({ 
+    
+    id: contact.id, col1: contact.id, col2: contact.Customername, col3: contact.email, 
+    col4: contact.message, 
+    }); });
+
+    const columns = [
+      { field: "col1", headerName: "first", width: 150 },
+      { field: "col2", headerName: "second", width: 150 },
+      { field: "col4", headerName: "third", width: 150 },
+  
+  
+  
+    ];
 
   return (
     <div className="table" style={{ height: 500, width: "60%" }}>

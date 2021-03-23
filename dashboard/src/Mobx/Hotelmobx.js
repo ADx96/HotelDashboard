@@ -9,7 +9,7 @@ class HotelStore {
       const res = await axios.post("http://localhost:8000/Hotels/", newHotel);
       this.hotels.push(res.data);
     } catch (error) {
-      console.log("log1 -> createCookie -> error", error);
+      console.log("log1 -> createHotel -> error", error);
     }
   };
   deleteHotel = async (hotelId) => {
@@ -17,7 +17,7 @@ class HotelStore {
       await axios.delete(`http://localhost:8000/Hotels/${hotelId}`);
       this.hotels = this.hotels.filter((hotel) => hotel.id !== +hotelId);
     } catch (error) {
-      console.log("Hotels -> deleteCookie -> error", error);
+      console.log("Hotels -> deleteHotel -> error", error);
     }
   };
   fetchHotel = async () => {

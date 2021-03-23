@@ -11,23 +11,27 @@ function Booking() {
       col1: booking.id,
       col2: booking.hotelname,
       col3: booking.customername,
-      col4: booking.price,
-      col5: booking.Date,
-      col6: booking.DateEnd,
-      col7: booking.customerpassportnumber,
-      col8: booking.hotellocation,
-      col9: booking.Roomnum,
+      col4: booking.mobile,
+      col5: booking.price,
+      col6: booking.Date,
+      col7: booking.DateEnd,
+      col8: booking.customerpassportnumber,
+      col9: booking.hotellocation,
+      col10: booking.RoomNum,
     });
   });
 
   const columns = [
     { field: "col1", headerName: "id", width: 190 },
     { field: "col2", headerName: "hotelname", width: 190 },
-    { field: "col4", headerName: "customername", width: 190 },
-    { field: "col5", headerName: "Start Date", width: 190 },
-    { field: "col6", headerName: "End Date", width: 190 },
-    { field: "col7", headerName: "Customer Passport Number", width: 290 },
-    { field: "col8", headerName: "Roomnum", width: 190 },
+    { field: "col3", headerName: "customername", width: 190 },
+    { field: "col4", headerName: "mobile", width: 190 },
+    { field: "col5", headerName: "price", width: 190 },
+    { field: "col6", headerName: "Date", width: 290 },
+    { field: "col7", headerName: "DateEnd", width: 190 },
+    { field: "col8", headerName: "Customer passport ", width: 190 },
+    { field: "col9", headerName: "Location", width: 190 },
+    { field: "col9", headerName: "RoomNum", width: 190 },
   ];
 
   return (

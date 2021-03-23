@@ -4,9 +4,12 @@ import axios from "axios";
 class RoomStore {
   rooms = [];
 
-  createRoom = async (newRoom) => {
+  createRoom = async (newRoom, hotelId) => {
     try {
-      const res = await axios.post("http://localhost:8000/Rooms", newRoom);
+      const res = await axios.post(
+        `http://localhost:8000/Hotels/${hotelId}/Rooms`,
+        newRoom
+      );
       this.rooms.push(res.data);
     } catch (error) {
       console.log("log1 -> createRooms -> error", error);
@@ -33,7 +36,7 @@ class RoomStore {
   updateRoom = async (updatedRoom) => {
     try {
       await axios.put(
-        `http://localhost:8000/Hotels/${updatedRoom.id}`,
+        `http://localhost:8000/Rooms/${updatedRoom.id}`,
         updatedRoom
       );
       const room = this.rooms.find((room) => room.id === updatedRoom.id);

@@ -5,6 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import roomsStore from "../Mobx/Roomsmobx";
+import hotelsStore from "../Mobx/Hotelmobx";
+import { observer } from "mobx-react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,18 +22,21 @@ const useStyles = makeStyles((theme) => ({
 
 const Roomsmodal = () => {
   const classes = useStyles();
-  const [hotel, setHotel] = useState({
+  const [room, setRoom] = useState({
     roomnum: 0,
     price: 0,
     rooms: 0,
   });
+  const [hotelname, setHotel] = useState(null);
 
   const handleChange = (event) => {
-    setHotel({ ...hotel, [event.target.name]: event.target.value });
+    setRoom({ ...room, [event.target.name]: event.target.value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    roomsStore.createHotel(hotel);
+    const a = hotelsStore.hotels.find((hotel) => hotel.hotelname === hotelname);
+    console.log(a);
+    roomsStore.createRoom(room, a.id);
   };
 
   return (
@@ -44,6 +49,20 @@ const Roomsmodal = () => {
     >
       <div className="col-6">
         <h2>Add a room</h2>
+
+        <TextField
+          id="outlined-basic"
+          label="hotelname"
+          required
+          variant="outlined"
+          type="text"
+          min="1"
+          className="form-control"
+          name="hotelname"
+          value={hotelname}
+          onChange={(event) => setHotel(event.target.value)}
+        />
+
         <TextField
           id="outlined-basic"
           label="price"
@@ -84,11 +103,16 @@ const Roomsmodal = () => {
         />
       </div>
 
-      <Button variant="contained" color="primary" disableElevation>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        type="submit"
+      >
         Add
       </Button>
     </form>
   );
 };
 
-export default Roomsmodal;
+export default observer(Roomsmodal);

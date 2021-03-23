@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
 import "../Components/SideBar";
 import Hotelmodal from "../Components2/Create";
@@ -6,15 +6,17 @@ import roomsStore from "../Mobx/Roomsmobx";
 import hotelsStore from "../Mobx/Hotelmobx";
 import Roomsmodal from "../Components2/Createroom";
 import Button from "@material-ui/core/Button";
+import { observer } from "mobx-react";
 
-function Inbox(hotelId) {
+function Inbox() {
   const rows = [];
+
   roomsStore.rooms.forEach((room) => {
     rows.push({
       id: room.id,
       col8: room.roomnum,
       col9: room.price,
-      col10: room.roomnum,
+      col10: room.rooms,
     });
   });
 
@@ -32,10 +34,11 @@ function Inbox(hotelId) {
   });
 
   const columns = [
-    { field: "col1", headerName: "Hotel name", width: 190 },
-    { field: "col2", headerName: "rating", width: 150 },
-    { field: "col4", headerName: "location", width: 150 },
-    { field: "col5", headerName: "description", width: 180 },
+    { field: "col1", headerName: "Hotel id", width: 190 },
+    { field: "col2", headerName: "Hotel name", width: 150 },
+    { field: "col3", headerName: "rating", width: 150 },
+    { field: "col4", headerName: "description", width: 180 },
+    { field: "col5", headerName: "hotellocation", width: 150 },
     { field: "col6", headerName: "price", width: 150 },
     { field: "col7", headerName: "image", width: 150 },
     { field: "col8", headerName: "Room number", width: 190 },
@@ -44,7 +47,7 @@ function Inbox(hotelId) {
   ];
   return (
     <div>
-      <div style={{ display: "flex" }}>
+      <div className="table-container" style={{ display: "flex" }}>
         <div className="table" style={{ height: 500, width: "60%" }}>
           <DataGrid
             rows={rows}
@@ -52,6 +55,7 @@ function Inbox(hotelId) {
             pageSize={5}
             data={hotelsStore.HotelList}
             checkboxSelection
+            onRowSelected={(row) => console.log(row.data.id, row.isSelected)}
             localeText={{
               toolbarDensity: "Size",
               toolbarDensityLabel: "Size",
@@ -72,7 +76,7 @@ function Inbox(hotelId) {
         variant="contained"
         color="primary"
         disableElevation
-        onClick={() => hotelsStore.deleteHotel(hotelId)}
+        onClick={() => hotelsStore.deleteHotel()}
       >
         Delete
       </Button>
@@ -80,4 +84,4 @@ function Inbox(hotelId) {
   );
 }
 
-export default Inbox;
+export default observer(Inbox);

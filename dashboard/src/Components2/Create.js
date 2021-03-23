@@ -25,8 +25,8 @@ const Hotelmodal = () => {
   const [hotel, setHotel] = useState({
     hotelname: "",
     price: 0,
-    rating: "",
-    location: "",
+    rating: 0,
+    hotellocation: "",
     description: "",
     image: "",
   });
@@ -44,8 +44,8 @@ const Hotelmodal = () => {
       className={classes.root}
       noValidate
       autoComplete="off"
-      onSubmit={handleSubmit}
       style={{ marginLeft: "50px" }}
+      onSubmit={handleSubmit}
     >
       <div className="form-group row">
         <h2>Create a hotel</h2>
@@ -94,16 +94,29 @@ const Hotelmodal = () => {
           variant="outlined"
           type="text"
           className="form-control"
-          name="location"
+          name="hotellocation"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="col-6">
+        <TextField
+          id="outlined-basic"
+          label="rating"
+          required
+          variant="outlined"
+          type="text"
+          className="form-control"
+          name="rating"
           onChange={handleChange}
         />
       </div>
       <div className="form-group">
         <div className="App">
           <label htmlFor="upload-photo">
-            <input
+            <TextField
               style={{ display: "none" }}
               id="upload-photo"
+              required
               name="image"
               type="file"
               onChange={handleChange}
@@ -112,8 +125,10 @@ const Hotelmodal = () => {
               color="secondary"
               size="small"
               component="span"
+              name="image"
               aria-label="add"
               variant="extended"
+              onChange={handleChange}
             >
               <AddIcon /> Upload photo
             </Fab>
@@ -121,7 +136,12 @@ const Hotelmodal = () => {
         </div>
       </div>
 
-      <Button variant="contained" color="primary" disableElevation>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        onClick={handleSubmit}
+      >
         Create
       </Button>
     </form>

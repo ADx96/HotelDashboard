@@ -2,7 +2,7 @@ import { makeObservable, observable, action } from "mobx";
 import axios from "axios";
 
 class BookingStore {
- bookings = [];
+  bookings = [];
 
   createBooking = async (newBooking) => {
     try {
@@ -18,7 +18,9 @@ class BookingStore {
   deleteBooking = async (bookingId) => {
     try {
       await axios.delete(`http://localhost:8000/Bookings/${bookingId}`);
-      this.bookings = this.bookings.filter((booking) => booking.id !== +bookingId);
+      this.bookings = this.bookings.filter(
+        (booking) => booking.id !== +bookingId
+      );
     } catch (error) {
       console.log("Booking -> deleteCookie -> error", error);
     }
@@ -39,7 +41,9 @@ class BookingStore {
         `http://localhost:8000/Bookings/${updatedBooking.id}`,
         updatedBooking
       );
-      const booking = this.bookings.find((hotel) => hotel.id === updatedBooking.id);
+      const booking = this.bookings.find(
+        (booking) => booking.id === updatedBooking.id
+      );
       for (const key in booking) booking[key] = updatedBooking[key];
     } catch (error) {
       console.log("Booking -> updateCookie -> error", error);

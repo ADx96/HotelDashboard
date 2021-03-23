@@ -1,12 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import hotelsStore from "../Mobx/Hotelmobx";
 import "./Create.css";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import roomsStore from "../Mobx/Roomsmobx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,15 +18,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Hotelmodal = () => {
+const Roomsmodal = () => {
   const classes = useStyles();
   const [hotel, setHotel] = useState({
-    hotelname: "",
+    roomnum: 0,
     price: 0,
-    rating: "",
-    location: "",
-    description: "",
-    image: "",
+    rooms: 0,
   });
 
   const handleChange = (event) => {
@@ -36,7 +31,7 @@ const Hotelmodal = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    hotelsStore.createHotel(hotel);
+    roomsStore.createHotel(hotel);
   };
 
   return (
@@ -47,20 +42,8 @@ const Hotelmodal = () => {
       onSubmit={handleSubmit}
       style={{ marginLeft: "50px" }}
     >
-      <div className="form-group row">
-        <h2>Create a hotel</h2>
-        <TextField
-          id="outlined-basic"
-          label="name"
-          variant="outlined"
-          required
-          type="text"
-          className="form-control"
-          name="hotelname"
-          onChange={handleChange}
-        />
-      </div>
       <div className="col-6">
+        <h2>Add a room</h2>
         <TextField
           id="outlined-basic"
           label="price"
@@ -77,55 +60,35 @@ const Hotelmodal = () => {
       <div className="form-group">
         <TextField
           id="outlined-basic"
-          label="description"
-          variant="outlined"
+          label="Room number"
           required
+          variant="outlined"
           type="text"
+          min="1"
           className="form-control"
-          name="description"
+          name="roomnum"
           onChange={handleChange}
         />
       </div>
       <div className="col-6">
         <TextField
           id="outlined-basic"
-          label="location"
+          label="Rooms Availabe"
           required
           variant="outlined"
           type="text"
+          min="1"
           className="form-control"
-          name="location"
+          name="rooms"
           onChange={handleChange}
         />
       </div>
-      <div className="form-group">
-        <div className="App">
-          <label htmlFor="upload-photo">
-            <input
-              style={{ display: "none" }}
-              id="upload-photo"
-              name="image"
-              type="file"
-              onChange={handleChange}
-            />
-            <Fab
-              color="secondary"
-              size="small"
-              component="span"
-              aria-label="add"
-              variant="extended"
-            >
-              <AddIcon /> Upload photo
-            </Fab>
-          </label>
-        </div>
-      </div>
 
       <Button variant="contained" color="primary" disableElevation>
-        Create
+        Add
       </Button>
     </form>
   );
 };
 
-export default Hotelmodal;
+export default Roomsmodal;

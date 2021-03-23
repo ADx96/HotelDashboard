@@ -18,3 +18,11 @@ li a:hover {
   background-color: #555;
   color: white;
 }
+.MuiAppBar-colorPrimary {
+  color: #fff;
+  background-color: #022042 !important;
+}
+.MuiButton-containedPrimary {
+  color: #fff;
+  background-color: #125d92 !important;
+}

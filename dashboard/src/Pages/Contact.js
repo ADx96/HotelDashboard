@@ -1,11 +1,11 @@
 import React from "react";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
 import "../Components/Datatable.css";
-import ContactsStore from "../Mobx/ContactMobx";
+import contactStore from "../Mobx/ContactMobx";
 
 function Contact() {
   const rows = [];
-  ContactsStore.contacts.forEach((contact) => {
+  contactStore.contacts.forEach((contact) => {
     rows.push({
       id: contact.id,
       col1: contact.id,
@@ -17,11 +17,11 @@ function Contact() {
   });
 
   const columns = [
-    { field: "col1", headerName: "id", width: 150 },
-    { field: "col2", headerName: "CustomerName", width: 150 },
-    { field: "col4", headerName: "mobile", width: 150 },
-    { field: "col4", headerName: "email", width: 150 },
-    { field: "col4", headerName: "message", width: 150 },
+    { field: "col1", headerName: "id", width: 170 },
+    { field: "col2", headerName: "Customer Name", width: 190 },
+    { field: "col3", headerName: "mobile", width: 170 },
+    { field: "col4", headerName: "email", width: 170 },
+    { field: "col5", headerName: "message", width: 170 },
   ];
 
   return (

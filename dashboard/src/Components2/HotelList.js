@@ -16,7 +16,15 @@ const Hotel = () => {
 
   return (
     <div>
-      <ProductWrapper>{hotelList}</ProductWrapper>
+      <div
+        style={{
+          justifyContent: "center",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        {hotelList}
+      </div>
     </div>
   );
 };

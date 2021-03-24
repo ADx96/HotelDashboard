@@ -18,6 +18,7 @@ function Booking() {
       col8: booking.customerpassportnumber,
       col9: booking.hotellocation,
       col10: booking.RoomNum,
+      col11: booking.movienight,
     });
   });
 
@@ -31,7 +32,8 @@ function Booking() {
     { field: "col7", headerName: "DateEnd", width: 190 },
     { field: "col8", headerName: "Customer passport ", width: 190 },
     { field: "col9", headerName: "Location", width: 190 },
-    { field: "col9", headerName: "RoomNum", width: 190 },
+    { field: "col10", headerName: "Room Num", width: 190 },
+    { field: "col11", headerName: "movienight", width: 190 },
   ];
 
   return (
